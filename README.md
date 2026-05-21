@@ -103,7 +103,7 @@ curs_scc_441D_masini/
 
 Aplicatia va asculta pe `http://127.0.0.1:5011/`.
 
-Alternativ, fara `flask run`:
+Alternativ:
 
 ```bash
 python masini.py
