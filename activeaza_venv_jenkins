@@ -1,0 +1,6 @@
+# Creare venv si instalare dependinte. Folosit cand .venv lipseste,
+# tipic la prima rulare (inclusiv din Jenkins).
+python3 -m venv .venv
+. .venv/bin/activate
+pip install --upgrade pip
+pip install -r quickrequirements.txt

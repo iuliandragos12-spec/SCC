@@ -1,0 +1,11 @@
+# Activare venv local. Daca lipseste, ruleaza activeaza_venv_jenkins
+# pentru a-l crea si a instala dependintele.
+. .venv/bin/activate
+
+if [ $? -eq 0 ]
+then
+    echo "SUCCESS: venv was activated."
+else
+    echo "FAIL: cannot activate venv"
+    . ./activeaza_venv_jenkins
+fi

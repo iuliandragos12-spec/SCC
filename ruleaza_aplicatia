@@ -1,0 +1,8 @@
+#!/bin/bash
+# LINUX
+export FLASK_APP=masini
+
+# WINDOWS (cmd):
+# set FLASK_APP=masini
+
+flask run -h 0.0.0.0 -p 5011 --reload

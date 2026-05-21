@@ -1,0 +1,19 @@
+# Force LF line endings for all shell-related files so the project
+# keeps working when cloned on a Linux VM from a Windows host.
+* text=auto eol=lf
+
+*.sh             text eol=lf
+Dockerfile       text eol=lf
+Jenkinsfile      text eol=lf
+dockerstart.sh   text eol=lf
+activeaza_venv         text eol=lf
+activeaza_venv_jenkins text eol=lf
+ruleaza_aplicatia      text eol=lf
+
+# binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.svg  text eol=lf
