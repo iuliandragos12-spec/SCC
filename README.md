@@ -17,6 +17,7 @@ modelul aplicatiei exemplu
 - [Rulare locala](#rulare-locala)
 - [Testare](#testare)
 - [Containerizare (Docker)](#containerizare-docker)
+- [Integrare continua (Jenkins)](#integrare-continua-jenkins)
 - [Stadiu dezvoltatori](#stadiu-dezvoltatori)
 - [Documentatie pe branch-uri de dezvoltare](#documentatie-pe-branch-uri-de-dezvoltare)
 
@@ -103,11 +104,23 @@ curs_scc_441D_masini/
 
 Aplicatia va asculta pe `http://127.0.0.1:5011/`.
 
+Pornire cu scriptul `./ruleaza_aplicatia` (`flask run`):
+
+![Pornire cu ./ruleaza_aplicatia](doc/capturi/rulare_script_aplicatia.png)
+
 Alternativ, fara `flask run`:
 
 ```bash
 python masini.py
 ```
+
+![Pornire cu python masini.py](doc/capturi/rulare_python_masini.png)
+
+Aplicatia in browser (pagina principala):
+
+![Aplicatia in browser](doc/capturi/app_browser_index.png)
+
+![Descriere tehnica in browser](doc/capturi/app_browser_descriere.png)
 
 ---
 
@@ -122,6 +135,10 @@ pytest
 
 `pytest.ini` adauga directorul `app/` in `pythonpath`, astfel incat
 testele importa `lib.biblioteca_masini`.
+
+Rezultatul rularii testelor (8 teste, toate PASSED):
+
+![Rezultat pytest](doc/capturi/pytest_8_passed.png)
 
 Testele acopera fiecare dintre cele 4 functii din biblioteca:
 
@@ -143,22 +160,33 @@ In Jenkins, testarea ruleaza automat in pipeline-ul declarativ
 docker build -t curs_scc_441d_masini:dev .
 ```
 
+![docker build](doc/capturi/docker_build.png)
+
 ### Rulare container
 
 ```bash
 docker run --rm -p 5011:5011 --name masini_c5 curs_scc_441d_masini:dev
 ```
 
+![docker run](doc/capturi/docker_run.png)
+
 Apoi se acceseaza in browser:
 [http://localhost:5011/](http://localhost:5011/).
 
-In documentatia branch-ului de dezvoltare se vor adauga capturi de
-ecran pentru:
+---
 
-- imaginea de container creata (`docker images`)
-- containerul rulat (`docker ps`)
-- browser-ul accesand `http://localhost:5011/`
-- mesajele afisate in consola containerului
+## Integrare continua (Jenkins)
+
+Pipeline-ul declarativ din `Jenkinsfile` ruleaza automat etapele:
+**Build -> pylint -> Unit Testing cu pytest -> Build image -> Deploy**.
+
+Toate stage-urile trecute cu succes:
+
+![Pipeline Jenkins](doc/capturi/jenkins_pipeline_graph.png)
+
+Duratele fiecarui stage:
+
+![Durate stage-uri Jenkins](doc/capturi/jenkins_stage_durations.png)
 
 ---
 
